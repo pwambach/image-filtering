@@ -1,0 +1,19 @@
+{
+  "name": "image-filtering",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.ts",
+  "scripts": {
+    "dev": "vite --port 8000",
+    "build": "tsc && vite build",
+    "test": "tsc --noEmit",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "stylus": "^0.62.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.1.0"
+  },
+  "author": "Philip Wambach",
+  "license": "ISC"
+}
