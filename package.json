@@ -5,7 +5,7 @@
   "main": "src/main.ts",
   "scripts": {
     "dev": "vite --port 8000",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build --base=https://pwambach.github.io/image-filtering/",
     "test": "tsc --noEmit",
     "preview": "vite preview"
   },
