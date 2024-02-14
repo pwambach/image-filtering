@@ -1,6 +1,6 @@
 # Image Filtering
 
-WebGL based image filtering app. See Demo.
+WebGL based image filtering app. See [Demo](https://pwambach.github.io/image-filtering/index.html).
 
 ## Local development
 
