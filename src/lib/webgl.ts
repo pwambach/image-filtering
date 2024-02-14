@@ -1,7 +1,7 @@
 /**
  * Creates a WebGL2 context for a canvas element.
  * @param canvas The canvas element
- * @returns
+ * @returns The WebGL2 context
  */
 export function createContext(
   canvas: HTMLCanvasElement,
@@ -26,12 +26,8 @@ export function createContext(
 export function compileShader(
   gl: WebGL2RenderingContext,
   shaderSource: string,
-  shaderType: number
+  shaderType: typeof gl.VERTEX_SHADER | typeof gl.FRAGMENT_SHADER
 ) {
-  if (!(shaderType === gl.VERTEX_SHADER || shaderType === gl.FRAGMENT_SHADER)) {
-    throw new Error("Invalid shader type.");
-  }
-
   const shader = gl.createShader(shaderType);
 
   if (!shader) {

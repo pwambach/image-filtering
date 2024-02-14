@@ -9,7 +9,7 @@ export class FilterRenderer {
   private texture: WebGLTexture;
   private uKernelLoc: WebGLUniformLocation;
   private uKernelSizeLoc: WebGLUniformLocation;
-  private uResolutionLoc: WebGLUniformLocation;
+  private uImageSizeLoc: WebGLUniformLocation;
   private uSamplerLoc: WebGLUniformLocation;
 
   constructor(gl: WebGL2RenderingContext) {
@@ -24,10 +24,7 @@ export class FilterRenderer {
       this.program,
       "kernelSize"
     )!;
-    this.uResolutionLoc = this.gl.getUniformLocation(
-      this.program,
-      "imageSize"
-    )!;
+    this.uImageSizeLoc = this.gl.getUniformLocation(this.program, "imageSize")!;
     this.uSamplerLoc = this.gl.getUniformLocation(this.program, "sampler")!;
   }
 
@@ -63,9 +60,16 @@ export class FilterRenderer {
 
     this.gl.bindVertexArray(vao);
 
-    // Positions for a 2D quad with 6 vertices from -1..1
+    // Vertex positions for two 2D triangles forming a quad from -1..1
+    // prettier-ignore
     const positions = new Float32Array([
-      -1, 1, 1, 1, -1, -1, 1, 1, 1, -1, -1, -1,
+      -1, 1,
+      1, 1,
+      -1, -1,
+
+      1, 1,
+      1, -1,
+      -1, -1
     ]);
 
     const positionsBuffer = this.gl.createBuffer();
@@ -138,7 +142,7 @@ export class FilterRenderer {
       img
     );
     this.gl.useProgram(this.program);
-    this.gl.uniform2f(this.uResolutionLoc, img.width, img.height);
+    this.gl.uniform2f(this.uImageSizeLoc, img.width, img.height);
   }
 
   /**
